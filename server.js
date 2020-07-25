@@ -30,7 +30,7 @@ mongoose.connect(process.envMONGOD_URI || "mongodb://localhost/workout", { useNe
 //routes
 //GET workouts
 app.get("/api/workouts", (req, res) => {
-    db.Workout.find({})
+    Workout.find({})
         .then(dbWorkout => {
             res.json(dbWorkout);
         })
@@ -41,7 +41,7 @@ app.get("/api/workouts", (req, res) => {
 
 //POST workout
 app.post("/api/workouts", ({body}, res) => {
-    db.Workout.create(body)
+    Workout.create(body)
         .then(dbWorkout => {
             res.json(dbWorkout);
         })
