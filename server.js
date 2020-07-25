@@ -79,29 +79,7 @@ app.put("/api/workouts/:id", (req, res) => {
       });
 })
 
-// app.put("/api/workouts/:id", (req,res) => {
 
-//     let urlData = req.params;
-//     let data = req.body;
-//       Workout.updateOne( {_id: urlData.id }, {$push: {exercises:  [
-//         {
-//         "type" : data.type,
-//         "name" : data.name,
-//         "duration" : data.duration,
-//         "distance" : data.distance,
-//         "weight" : data.weight,
-//         "reps" : data.reps,
-//         "sets" : data.sets
-//         }
-//       ] 
-//     }}).then(dbUpdate => {
-//       res.json(dbUpdate);
-//     })
-//     .catch(err => {
-//       res.json(err);
-//     });
-    
-//     });
 
 //html routes
 app.get("/exercise", (req, res) => {
