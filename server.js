@@ -2,6 +2,8 @@
 const express = require("express");
 const logger = require ("morgan");
 const mongoose = require ("mongoose");
+const path = require("path");
+
 
 //server
 const PORT = process.env.PORT || 3000;
@@ -49,6 +51,33 @@ app.post("/api/workouts", ({body}, res) => {
             res.json(err);
         });
 });
+
+//PUT workout to add exercise
+app.put("/api/workouts/:id", (req, res) => {
+    Workout.update(
+        {
+            _id: req.params.id
+        },
+        {
+            $set: {
+                exercises: [
+                    {
+                    type: req.body.type,
+                    name: req.body.name,
+                    duration: req.body.duration,
+                    distance: req.body.dustance
+                    }
+                ]
+            }
+        }
+    )
+})
+
+
+//html routes
+app.get("/exercise", (req, res) => {
+    res.sendFile(path.join(__dirname + "/public/exercise.html"));
+  });
 
 app.listen(PORT, () => {
     console.log(`App running on port ${PORT}!`);
